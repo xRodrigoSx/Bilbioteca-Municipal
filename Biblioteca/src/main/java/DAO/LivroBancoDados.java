@@ -85,7 +85,7 @@ public class LivroBancoDados {
                     livro.setTitulo(rs.getString("titulo"));
                     livro.setGenero(rs.getString("genero"));
                     livro.setNumeroPaginas(rs.getString("numeroPaginas"));
-                    livro.setNumeroPaginas(rs.getString("numeroPaginas"));
+                    livro.setResumo(rs.getString("resumo"));
 
                     listaLivros.add(livro);
                 }
@@ -141,6 +141,8 @@ public class LivroBancoDados {
                     livro.setTitulo(rs.getString("titulo"));
                     livro.setGenero(rs.getString("genero"));
                     livro.setNumeroPaginas(rs.getString("numeroPaginas"));
+                    livro.setResumo(rs.getString("resumo"));
+
                     listaLivros.add(livro);
                 }
             }
@@ -183,7 +185,9 @@ public class LivroBancoDados {
             stmt.setString(1, livroAjuste.getTitulo());
             stmt.setString(2, livroAjuste.getGenero());
             stmt.setString(3, livroAjuste.getNumeroPaginas());
-            stmt.setInt(4, livroAjuste.getId());
+            stmt.setString(4, livroAjuste.getResumo());
+
+            stmt.setInt(5, livroAjuste.getId());
             stmt.execute();
             System.out.println("Alteração do registro realizada com sucesso!");
         } catch (Exception e) {
