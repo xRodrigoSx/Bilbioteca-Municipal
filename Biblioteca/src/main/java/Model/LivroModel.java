@@ -5,7 +5,7 @@ public class LivroModel {
    
     // Atributos do livro
    
-    private String codigo;
+    private int id;
     private String titulo;
     private String genero;
     private String numeroPaginas;
@@ -14,20 +14,20 @@ public class LivroModel {
     public LivroModel() {
     }
 
-    public LivroModel(String codigo, String titulo, String genero, String numeroPaginas, String resumo) {
-        this.codigo = codigo;
+    public LivroModel(int id, String titulo, String genero, String numeroPaginas, String resumo) {
+        this.id = id;
         this.titulo = titulo;
         this.genero = genero;
         this.numeroPaginas = numeroPaginas;
         this.resumo = resumo;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitulo() {
