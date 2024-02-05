@@ -126,7 +126,7 @@ public class LivroBancoDados {
         LivroModel livro = null;
         ArrayList<LivroModel> listaLivros = null;
         
-        String sql = "SELECT * FROM ROOT.CONTATOS WHERE titulo LIKE '%" + 
+        String sql = "SELECT * FROM ROOT.LIVROS WHERE titulo LIKE '%" + 
                 titulo + "%' ORDER BY titulo";
         
         try {
@@ -177,7 +177,7 @@ public class LivroBancoDados {
         Connection conn = null;
         PreparedStatement stmt = null;
         
-        String sql = "UPDATE ROOT.CONTATOS SET titulo=?, genero=?, numeroPaginas=? where id=?";
+        String sql = "UPDATE ROOT.CONTATOS SET titulo=?, genero=?, numeroPaginas=?, RESUMO=? where id=?";
         
         try {
             conn = new ConexaoBD().getConnection();
