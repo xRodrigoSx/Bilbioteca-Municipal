@@ -7,15 +7,15 @@ import org.apache.derby.iapi.types.ConcatableDataValue;
 
 public class LivroController {
 
-    public void cadastrarLivroController(String titulo, String telefone, String email) {
+    public void cadastrarLivroController(String titulo, String genero, String numPaginas, String resumo) {
 
         //Verificar se as informações foram enviadas da maneira correta!
         if ((titulo != null && titulo.length() > 0)
-                && (telefone != null && telefone.length() > 0)
-                && (email != null && email.length() > 0)) {
+                && (genero != null && genero.length() > 0)
+                && (numPaginas != null && numPaginas.length() > 0)) {
 
             // Intanciar o objeto de acordo com o nosso modelo (Classe Livro)
-            LivroModel novoLivro = new LivroModel(titulo, telefone, email);
+            LivroModel novoLivro = new LivroModel(titulo, genero, numPaginas, resumo);
 
             //Chamar o método disponivel na classe de livros que realiza a inserção do
             // registro no banco de dados.
@@ -37,13 +37,13 @@ public class LivroController {
         return livro.buscarLivros(titulo);
     }
 
-    public void alterarLivro(int id, String titulo, String telefone, String email) {
+    public void alterarLivro(int id, String titulo, String genero, String numPaginas, String resumo) {
 
         if ((titulo != null && titulo.length() > 0)
-                && (telefone != null && telefone.length() > 0)
-                && (email != null && email.length() > 0)) {
+                && (genero != null && genero.length() > 0)
+                && (numPaginas != null && numPaginas.length() > 0)) {
 
-            LivroModel livroAjuste = new LivroModel(id, titulo, telefone, email);
+            LivroModel livroAjuste = new LivroModel(id, titulo, genero, numPaginas,  resumo);
             livroAjuste.alterarLivro(livroAjuste);
         }
     }
