@@ -3,7 +3,6 @@ package Controller;
 import Model.LivroModel;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import org.apache.derby.iapi.types.ConcatableDataValue;
 
 public class LivroController {
 
