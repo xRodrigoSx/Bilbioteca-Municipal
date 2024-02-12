@@ -9,6 +9,7 @@ import Model.LivroModel;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,11 +25,15 @@ public class CadastroLivro extends javax.swing.JFrame {
         initComponents();
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        getContentPane().setBackground(new java.awt.Color(10, 10, 10));
+        getContentPane().setBackground(new java.awt.Color(25, 25, 30));
         
 
+        txtTitulo.setEnabled(false);
+        txtGenero.setEnabled(false);
+        txtNumPaginas.setEnabled(false);
+        txtResumo.setEnabled(false);
 
-
+        listarLivrosView();
     }
 
     /**
@@ -53,6 +58,12 @@ public class CadastroLivro extends javax.swing.JFrame {
         jButtonsSalvar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableListaLivros = new javax.swing.JTable();
+        jButtonNovo = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        lblId = new javax.swing.JLabel();
+        jLabelPesquisa = new javax.swing.JLabel();
+        txtPesquisar = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CADASTRO LIVRO");
@@ -61,7 +72,7 @@ public class CadastroLivro extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1080, 720));
         setSize(new java.awt.Dimension(1080, 720));
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CADASTRO DE LIVROS");
 
@@ -125,6 +136,43 @@ public class CadastroLivro extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableListaLivros);
 
+        jButtonNovo.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jButtonNovo.setText("NOVO");
+        jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelar.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jButtonCancelar.setText("CANCELAR");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+
+        lblId.setForeground(new java.awt.Color(255, 255, 255));
+        lblId.setText("ID: ");
+
+        jLabelPesquisa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelPesquisa.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelPesquisa.setText("<html> PESQUISAR 🔎</html>");
+
+        txtPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisarActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jButton1.setText("PESQUISAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,31 +181,44 @@ public class CadastroLivro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonsSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTitulo)
+                            .addComponent(txtGenero)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelTitulo)
+                                    .addComponent(jLabelGenero)
+                                    .addComponent(jLabelNumPaginas)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtNumPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(lblId)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelResumo)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabelPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTitulo)
-                                    .addComponent(txtGenero)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabelTitulo)
-                                            .addComponent(jLabelGenero)
-                                            .addComponent(jLabelNumPaginas)
-                                            .addComponent(txtNumPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 503, Short.MAX_VALUE)))
+                                .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonsSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelResumo)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())))
+                                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(220, 220, 220)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,11 +241,22 @@ public class CadastroLivro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelNumPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNumPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(jButtonsSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNumPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonsSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -197,11 +269,11 @@ public class CadastroLivro extends javax.swing.JFrame {
     private void jButtonsSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonsSalvarActionPerformed
         String titulo = txtTitulo.getText();
         String genero = txtGenero.getText();
-        String email = txtNumPaginas.getText();
+        String numPaginas = txtNumPaginas.getText();
         String resumo = txtResumo.getText();
 
         LivroController novoLivro = new LivroController();
-        novoLivro.cadastrarLivroController(titulo, genero, email, resumo);
+        novoLivro.cadastrarLivroController(titulo, genero, numPaginas, resumo);
 
         txtTitulo.setText("");
         txtGenero.setText("");
@@ -209,6 +281,63 @@ public class CadastroLivro extends javax.swing.JFrame {
 
         listarLivrosView();
     }//GEN-LAST:event_jButtonsSalvarActionPerformed
+
+    private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
+        txtTitulo.setEnabled(true);
+        txtGenero.setEnabled(true);
+        txtNumPaginas.setEnabled(true);
+        txtResumo.setEnabled(true);
+    }//GEN-LAST:event_jButtonNovoActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+                int resposta = JOptionPane.showConfirmDialog(null, 
+                "Deseja realmente cancelar?", 
+                "Confirmação de cancelamento!", 
+                JOptionPane.YES_NO_OPTION);
+        
+        if(resposta == 0){
+            txtTitulo.setText("");
+            txtGenero.setText("");
+            txtNumPaginas.setText("");
+            txtResumo.setText("");
+            lblId.setText("");
+            txtTitulo.setEnabled(false);
+            txtGenero.setEnabled(false);
+            txtNumPaginas.setEnabled(false);
+            txtResumo.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void txtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+               String itemPesquisa = txtPesquisar.getText();
+        try {
+
+            DefaultTableModel dtm = (DefaultTableModel) jTableListaLivros.getModel();
+            dtm.setRowCount(0);
+            LivroController livroControler = new LivroController();
+            ArrayList<LivroModel> listaLivros
+                    = livroControler.buscarLivrosController(itemPesquisa);
+
+            Iterator<LivroModel> iterator = listaLivros.iterator();
+
+            while (iterator.hasNext()) {
+                LivroModel livro = iterator.next();
+                dtm.addRow(new Object[]{
+                    livro.getId(),
+                    livro.getTitulo(),
+                    livro.getGenero(),
+                    livro.getNumeroPaginas(),
+                    livro.getResumo()
+                });
+            }
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
         void listarLivrosView() {
 
@@ -270,17 +399,23 @@ public class CadastroLivro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonsSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelGenero;
     private javax.swing.JLabel jLabelNumPaginas;
+    private javax.swing.JLabel jLabelPesquisa;
     private javax.swing.JLabel jLabelResumo;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableListaLivros;
+    private javax.swing.JLabel lblId;
     private javax.swing.JTextField txtGenero;
     private javax.swing.JFormattedTextField txtNumPaginas;
+    private javax.swing.JTextField txtPesquisar;
     private javax.swing.JTextArea txtResumo;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
