@@ -1,4 +1,4 @@
-/*
+🔎/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -157,7 +157,8 @@ public class CadastroLivro extends javax.swing.JFrame {
 
         jLabelPesquisa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelPesquisa.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelPesquisa.setText("<html> PESQUISAR 🔎</html>");
+
+    
 
         txtPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
