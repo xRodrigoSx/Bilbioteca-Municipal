@@ -25,7 +25,7 @@ public class CadastroLivro extends javax.swing.JFrame {
         initComponents();
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        getContentPane().setBackground(new java.awt.Color(10, 10, 10));
+        getContentPane().setBackground(new java.awt.Color(0, 153, 255));
         
 
         txtTitulo.setEnabled(false);
@@ -61,6 +61,9 @@ public class CadastroLivro extends javax.swing.JFrame {
         jButtonNovo = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         lblId = new javax.swing.JLabel();
+        jLabelPesquisar = new javax.swing.JLabel();
+        txtPesquisar = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CADASTRO LIVRO");
@@ -152,6 +155,10 @@ public class CadastroLivro extends javax.swing.JFrame {
         lblId.setForeground(new java.awt.Color(255, 255, 255));
         lblId.setText("ID: ");
 
+        jLabelPesquisar.setText("PESQUISAR");
+
+        jButton1.setText("PESQUISAR");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,7 +179,7 @@ public class CadastroLivro extends javax.swing.JFrame {
                                         .addComponent(txtNumPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(27, 27, 27)
                                         .addComponent(lblId)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 467, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelResumo)
@@ -188,8 +195,14 @@ public class CadastroLivro extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButtonsSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 778, Short.MAX_VALUE)))
+                                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelPesquisar)
+                                .addGap(29, 29, 29)
+                                .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -216,12 +229,17 @@ public class CadastroLivro extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNumPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(41, 41, 41)
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonsSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPesquisar)
+                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -334,12 +352,14 @@ public class CadastroLivro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonsSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelGenero;
     private javax.swing.JLabel jLabelNumPaginas;
+    private javax.swing.JLabel jLabelPesquisar;
     private javax.swing.JLabel jLabelResumo;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
@@ -348,6 +368,7 @@ public class CadastroLivro extends javax.swing.JFrame {
     private javax.swing.JLabel lblId;
     private javax.swing.JTextField txtGenero;
     private javax.swing.JFormattedTextField txtNumPaginas;
+    private javax.swing.JTextField txtPesquisar;
     private javax.swing.JTextArea txtResumo;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables

@@ -10,9 +10,9 @@ public class ConexaoDB {
 
         Connection conn = null;
         String className = "org.apache.derby.jdbc.ClientDriver";
-        String url = "jdbc:derby://localhost:1527/Biblioteca";
+        String url = "jdbc:derby://localhost:1527/biblioteca";
         String user = "root";
-        String password = "root";
+        String password = "123";
 
         try {
             Class.forName(className);

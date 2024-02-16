@@ -17,18 +17,18 @@ public class LivroBancoDados {
 //    private int id;
 //    private String titulo;
 //    private String genero;
-//    private String numeroPaginas;
+//    private String paginas;
 //    private String resumo;
 
     
     public void inserirLivroBD(LivroModel novoLivro) {
 
-        String sql = "INSERT INTO livros (titulo, genero, numeroPaginas, resumo) values (?, ?, ?, ?)";
+        String sql = "INSERT INTO livro (titulo, genero, paginas, resumo) values (?, ?, ?, ?)";
         PreparedStatement stmt = null;
         Connection connection = null;
 
         try {
-            connection = new ConexaoBD().getConnection();
+            connection = new ConexaoDB().getConnection();
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, novoLivro.getTitulo());
             stmt.setString(2, novoLivro.getGenero());
@@ -71,10 +71,10 @@ public class LivroBancoDados {
         LivroModel livro = null;
         ArrayList<LivroModel> listaLivros = null;
         
-        String sql = "SELECT * FROM ROOT.LIVROS";
+        String sql = "SELECT * FROM ROOT.LIVRO";
         
         try {
-            conn = new ConexaoBD().getConnection();
+            conn = new ConexaoDB().getConnection();
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
             if (rs != null) {
@@ -84,7 +84,7 @@ public class LivroBancoDados {
                     livro.setId(rs.getInt("id"));
                     livro.setTitulo(rs.getString("titulo"));
                     livro.setGenero(rs.getString("genero"));
-                    livro.setNumeroPaginas(rs.getString("numeroPaginas"));
+                    livro.setNumeroPaginas(rs.getString("paginas"));
                     livro.setResumo(rs.getString("resumo"));
 
                     listaLivros.add(livro);
@@ -126,11 +126,11 @@ public class LivroBancoDados {
         LivroModel livro = null;
         ArrayList<LivroModel> listaLivros = null;
         
-        String sql = "SELECT * FROM ROOT.LIVROS WHERE titulo LIKE '%" + 
+        String sql = "SELECT * FROM ROOT.LIVRO WHERE titulo LIKE '%" + 
                 titulo + "%' ORDER BY titulo";
         
         try {
-            conn = new ConexaoBD().getConnection();
+            conn = new ConexaoDB().getConnection();
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
             if (rs != null) {
@@ -140,7 +140,7 @@ public class LivroBancoDados {
                     livro.setId(rs.getInt("id"));
                     livro.setTitulo(rs.getString("titulo"));
                     livro.setGenero(rs.getString("genero"));
-                    livro.setNumeroPaginas(rs.getString("numeroPaginas"));
+                    livro.setNumeroPaginas(rs.getString("paginas"));
                     livro.setResumo(rs.getString("resumo"));
 
                     listaLivros.add(livro);
@@ -177,10 +177,10 @@ public class LivroBancoDados {
         Connection conn = null;
         PreparedStatement stmt = null;
         
-        String sql = "UPDATE ROOT.CONTATOS SET titulo=?, genero=?, numeroPaginas=?, RESUMO=? where id=?";
+        String sql = "UPDATE ROOT.LIVRO SET titulo=?, genero=?, Paginas=?, RESUMO=? where id=?";
         
         try {
-            conn = new ConexaoBD().getConnection();
+            conn = new ConexaoDB().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, livroAjuste.getTitulo());
             stmt.setString(2, livroAjuste.getGenero());
@@ -219,10 +219,10 @@ public class LivroBancoDados {
         Connection conn = null;
         PreparedStatement stmt = null;
         
-        String sql = "DELETE FROM ROOT.CONTATOS where id=?";
+        String sql = "DELETE FROM ROOT.LIVRO where id=?";
         
         try {
-            conn = new ConexaoBD().getConnection();
+            conn = new ConexaoDB().getConnection();
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             stmt.execute();
