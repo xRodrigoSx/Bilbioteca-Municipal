@@ -13,6 +13,8 @@ import org.apache.derby.iapi.types.ConcatableDataValue;
 
 public class CadastroUsuario extends javax.swing.JFrame {
 
+    Home tela_principal;
+    
     public CadastroUsuario() {
         initComponents();
         listarUsuariosView();
@@ -155,6 +157,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
         lblEmail.setText("Email:");
 
         lblEndereco.setText("Endereço:");
+
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -619,6 +627,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
         alterarStatus.alterarStatus(id, status);
         listarUsuariosView();
     }//GEN-LAST:event_btnBloquearActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     void listarUsuariosView() {
 

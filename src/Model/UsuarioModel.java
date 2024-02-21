@@ -121,5 +121,5 @@ public class UsuarioModel {
     public void excluirUsuario(int id) {
         new CadastrarUsuarioDAO().excluirUsuarioBD(id);
     }
-
+    
 }
