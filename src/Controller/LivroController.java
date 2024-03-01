@@ -4,7 +4,6 @@ package Controller;
 import Model.LivroModel;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import java.sql.SQLException;
 
 public class LivroController {
 
@@ -28,7 +27,7 @@ public class LivroController {
 
     }
 
-    public ArrayList<LivroModel> listarLivrosController() throws SQLException {
+    public ArrayList<LivroModel> listarLivrosController() {
         LivroModel livro = new LivroModel();
         return livro.listarLivros();
     }

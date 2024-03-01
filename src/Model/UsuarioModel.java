@@ -16,7 +16,7 @@ public class UsuarioModel {
 
     public UsuarioModel() {
     }
-    
+
     public UsuarioModel(int id, String status) {
         this.id = id;
         this.status = status;
@@ -60,11 +60,11 @@ public class UsuarioModel {
     public String getCpf() {
         return cpf;
     }
-    
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
     public String getEmail() {
         return email;
     }
@@ -96,7 +96,7 @@ public class UsuarioModel {
     public void setStatus(String status) {
         this.status = status;
     }
-    
+
     public void cadastrarUsuarioDAO(UsuarioModel novoUsuario) {
         CadastrarUsuarioDAO novoRegistro = new CadastrarUsuarioDAO();
         novoRegistro.cadastrarUsuarioDB(novoUsuario);
@@ -107,11 +107,27 @@ public class UsuarioModel {
     }
 
     public ArrayList<UsuarioModel> buscarUsuarios(String nome) throws SQLException {
-        return new CadastrarUsuarioDAO().listarTodosUsuarios();
+        return new CadastrarUsuarioDAO().buscarUsuarioNome(nome);
+    }
+
+    public UsuarioModel buscarUsuariosPorId(int id) throws SQLException {
+        return new CadastrarUsuarioDAO().buscarUsuarioPorId(id);
     }
 
     public void alterarUsuario(UsuarioModel UsuarioAjuste) {
         new CadastrarUsuarioDAO().alterarUsuario(UsuarioAjuste);
+    }
+    
+    public int getUsuariosCadastrados() {
+        return new CadastrarUsuarioDAO().contarUsuariosCadastrados();
+    }
+    
+    public int getUsuariosBloqueados() {
+        return new CadastrarUsuarioDAO().contarUsuariosBloqueados();
+    }
+    
+    public int getUsuariosVerificados() {
+        return new CadastrarUsuarioDAO().contarUsuariosVerificados();
     }
     
     public void alterarStatus(UsuarioModel UsuarioAjuste) {
@@ -121,5 +137,5 @@ public class UsuarioModel {
     public void excluirUsuario(int id) {
         new CadastrarUsuarioDAO().excluirUsuarioBD(id);
     }
-    
+
 }

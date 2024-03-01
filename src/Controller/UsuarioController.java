@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class UsuarioController {
-
+    
     public void cadastrarUsuario(String nome, String cpf, String email, String endereco, String datanascimento, String status) {
         if ((nome != null && nome.length() > 0)
                 && (cpf != null && cpf.length() > 0)
@@ -28,11 +28,31 @@ public class UsuarioController {
         return Usuario.listarUsuarios();
     }
 
-    public ArrayList<UsuarioModel> listarUsuariosController(String nome) throws SQLException {
+    public ArrayList<UsuarioModel> buscarUsuariosController(String nome) throws SQLException {
         UsuarioModel Usuario = new UsuarioModel();
-        return Usuario.listarUsuarios();
+        return Usuario.buscarUsuarios(nome);
     }
-
+    
+    public static UsuarioModel puxarDadosUsuario(int id) throws SQLException {
+        UsuarioModel Usuario = new UsuarioModel();
+        return Usuario.buscarUsuariosPorId(id);
+    }
+    
+    public static int getUsers() throws SQLException {
+        UsuarioModel Usuario = new UsuarioModel();
+        return Usuario.getUsuariosCadastrados();
+    }
+    
+    public static int getBlocked() throws SQLException {
+        UsuarioModel Usuario = new UsuarioModel();
+        return Usuario.getUsuariosBloqueados();
+    }
+    
+    public static int getVerified() throws SQLException {
+        UsuarioModel Usuario = new UsuarioModel();
+        return Usuario.getUsuariosVerificados();
+    }
+    
     public void alterarUsuario(int id, String nome, String cpf, String email, String endereco, String datanascimento, String status) {
 
         if ((nome != null && nome.length() > 0)
