@@ -23,7 +23,7 @@ public class LivroBancoDados {
     
     public void inserirLivroBD(LivroModel novoLivro) {
 
-        String sql = "INSERT INTO livro (titulo, genero, paginas, resumo) values (?, ?, ?, ?)";
+        String sql = "INSERT INTO livro (titulo, genero, paginas, resumo, status) values (?, ?, ?, ?, ?)";
         PreparedStatement stmt = null;
         Connection connection = null;
 
@@ -34,6 +34,8 @@ public class LivroBancoDados {
             stmt.setString(2, novoLivro.getGenero());
             stmt.setString(3, novoLivro.getNumeroPaginas());
             stmt.setString(4, novoLivro.getResumo());
+            stmt.setString(5, novoLivro.getStatus());
+
 
             stmt.execute();
             System.out.println("Registro realizado com sucesso!");
@@ -86,6 +88,8 @@ public class LivroBancoDados {
                     livro.setGenero(rs.getString("genero"));
                     livro.setNumeroPaginas(rs.getString("paginas"));
                     livro.setResumo(rs.getString("resumo"));
+                    livro.setStatus(rs.getString("status"));
+                    
 
                     listaLivros.add(livro);
                 }
@@ -142,6 +146,7 @@ public class LivroBancoDados {
                     livro.setGenero(rs.getString("genero"));
                     livro.setNumeroPaginas(rs.getString("paginas"));
                     livro.setResumo(rs.getString("resumo"));
+                    livro.setStatus(rs.getString("status"));
 
                     listaLivros.add(livro);
                 }
@@ -177,7 +182,7 @@ public class LivroBancoDados {
         Connection conn = null;
         PreparedStatement stmt = null;
         
-        String sql = "UPDATE ROOT.LIVRO SET titulo=?, genero=?, Paginas=?, RESUMO=? where id=?";
+        String sql = "UPDATE ROOT.LIVRO SET titulo=?, genero=?, Paginas=?, RESUMO=? where id=? where status=?";
         
         try {
             conn = new ConexaoDB().getConnection();
@@ -186,6 +191,8 @@ public class LivroBancoDados {
             stmt.setString(2, livroAjuste.getGenero());
             stmt.setString(3, livroAjuste.getNumeroPaginas());
             stmt.setString(4, livroAjuste.getResumo());
+            stmt.setString(5, livroAjuste.getResumo());
+
 
             stmt.setInt(5, livroAjuste.getId());
             stmt.execute();
@@ -251,6 +258,7 @@ public class LivroBancoDados {
         }
         
     }
+    
     
     
 }
