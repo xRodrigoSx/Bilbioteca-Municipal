@@ -8,32 +8,42 @@ public class LivroModel {
    
     // Atributos do livro
    
+    
     private int id;
     private String titulo;
     private String genero;
     private String numeroPaginas;
     private String resumo;
+    private String status;
 
     public LivroModel() {
     }
 
-    public LivroModel(int id, String titulo, String genero, String numeroPaginas, String resumo) {
+    public LivroModel(int id, String titulo, String genero, String numeroPaginas, String resumo, String status) {
         this.id = id;
         this.titulo = titulo;
         this.genero = genero;
         this.numeroPaginas = numeroPaginas;
         this.resumo = resumo;
+        this.status = status;
     }
 
-    public LivroModel(String titulo, String genero, String numeroPaginas, String resumo) {
+    public LivroModel(String titulo, String genero, String numeroPaginas, String resumo, String status) {
         this.titulo = titulo;
         this.genero = genero;
         this.numeroPaginas = numeroPaginas;
         this.resumo = resumo;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     
-    
-
     public int getId() {
         return id;
     }
