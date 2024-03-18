@@ -133,14 +133,14 @@ public class CadastrarUsuarioDAO {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Erro ao realizar cadastro");
+            System.out.println("Erro ao buscar usuario");
         } finally {
             try {
                 if (stmt != null) {
                     stmt.close();
                 }
             } catch (Exception e) {
-                System.out.println("Erro ao finalizar steatment");
+                System.out.println("Erro ao finalizar steatment!");
                 e.printStackTrace();
             }
 
@@ -149,7 +149,7 @@ public class CadastrarUsuarioDAO {
                     conn.close();
                 }
             } catch (Exception e) {
-                System.out.println("Erro ao finalizar conexao com o banco de dados");
+                System.out.println("Erro ao finalizar conexao com o banco de dados!");
                 e.printStackTrace();
             }
         }
@@ -170,9 +170,9 @@ public class CadastrarUsuarioDAO {
             stmt.setString(2, UsuarioAjuste.getCpf());
             stmt.setString(3, UsuarioAjuste.getEmail());
             stmt.setString(4, UsuarioAjuste.getEndereco());
-            stmt.setInt(7, UsuarioAjuste.getId());
             stmt.setString(5, UsuarioAjuste.getDatanascimento());
             stmt.setString(6, UsuarioAjuste.getStatus());
+            stmt.setInt(7, UsuarioAjuste.getId());
             stmt.execute();
             System.out.println("Alteração do nascimento realizada com sucesso");
         } catch (Exception e) {
